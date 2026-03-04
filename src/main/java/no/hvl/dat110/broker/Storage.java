@@ -76,6 +76,10 @@ public class Storage {
 	}
 
 	public void removeSubscriber(String user, String topic) {
-        subscriptions.get(topic).remove(user);
+        Set<String> subscriber = subscriptions.get(topic);
+
+        if(subscriber != null) {
+            subscriber.remove(user);
+        }
 	}
 }

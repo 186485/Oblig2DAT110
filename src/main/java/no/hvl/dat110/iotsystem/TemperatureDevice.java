@@ -8,11 +8,26 @@ public class TemperatureDevice {
 	private static final int COUNT = 10;
 
 	public static void main(String[] args) {
-
+        System.out.print("TemeratureDevice Starting!");
 		// simulated / virtual temperature sensor
 		TemperatureSensor sn = new TemperatureSensor();
 
 		// TODO - start
+        Client client = new Client("sensor", Common.BROKERHOST, Common.BROKERPORT);
+
+        if(client.connect()){
+            for(int i = 0; i < COUNT; i++){
+                int temp = sn.read();
+                System.out.println("Temperatur lest er = " + temp);
+                client.publish("Temperatur", String.valueOf(temp));
+                try{
+                    Thread.sleep(1000);
+                }catch(InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+            client.disconnect();
+        }
 
 		// create a client object and use it to
 
@@ -24,7 +39,6 @@ public class TemperatureDevice {
 
 		System.out.println("Temperature device stopping ... ");
 
-		throw new UnsupportedOperationException(TODO.method());
 
 	}
 }
