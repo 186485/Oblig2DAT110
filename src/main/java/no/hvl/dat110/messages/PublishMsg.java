@@ -5,10 +5,37 @@ import no.hvl.dat110.common.TODO;
 public class PublishMsg extends Message {
 	
 	// message sent from client to create publish a message on a topic 
-
+    private String topic;
+    private String user;
+    private String message;
 	public PublishMsg(String user, String topic, String message) {
-
+    this.user = user;
+    this.topic = topic;
+    this.message = message;
 	}
+    public String getTopic() {
+        return topic;
+    }
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+    public String getUser() {
+        return user;
+    }
+    public void setUser(String user) {
+        this.user = user;
+    }
+    public String message() {
+        return message;
+    }
+    public void setMessage(String message) {
+        this.message = message;
+    }
+    @Override
+    public String toString() {
+        return "PublishMsg [topic=" + topic + ", user=" + user + ", message=" + message + "]";
+    }
+
 
 	// TODO:
 	// Implement object variables - a topic and a message is required
@@ -17,7 +44,6 @@ public class PublishMsg extends Message {
 	// as described in the project text
 	
 	public String getMessage() {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		return message;
 	}
 }
