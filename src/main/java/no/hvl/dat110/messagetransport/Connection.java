@@ -71,7 +71,7 @@ public class Connection {
 		TransportMessage message;
 		byte[] recvbuf;
 		
-		// TODO
+
 		// read a segment from the input stream and decapsulate into message
 		
 		recvbuf = new byte[MessageConfig.SEGMENTSIZE];
